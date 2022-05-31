@@ -17,8 +17,13 @@
   },
   "homepage": "https://github.com/elystanz/daily-tech#readme",
   "dependencies": {
+    "connect-session-sequelize": "^7.1.4",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-handlebars": "^6.0.6",
-    "node-modules": "^1.0.1"
+    "express-session": "^1.17.3",
+    "mysql2": "^2.3.3",
+    "node-modules": "^1.0.1",
+    "sequelize": "^6.20.1"
   }
 }
