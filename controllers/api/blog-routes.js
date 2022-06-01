@@ -1,14 +1,17 @@
 const router = require('express').Router();
-const sequeliza = require('../../config/connection');
-const { Post, User, Comment, Vote } = require('../../models');
+const sequelize = require('../../config/connection');
+const { Blog, User, Comment } = require('../../models');
 // const withAuth = require('../../util/auth');
 
 router.get('/', (req, res) => {
     Blog.findAll({
         attributes: [
             'id',
-            'post_url',
             'title',
+            'content',
+            'user_id',
+            'created',
+            'comment_text'
         ],
 
         include: [
@@ -36,7 +39,7 @@ router.get('/', (req, res) => {
         ]
     })
 
-    .then(dbPostData => res.json(dbPostData))
+    .then(dbBlogData => res.json(dbBlogData))
     .catch(err => {
         console.log(err);
         res.status(500).jason(err);
@@ -50,8 +53,10 @@ router.get('/:id', (req, res) => {
       },
       attributes: [
         'id',
-        'post_url',
         'title',
+        'context',
+        'user_id',
+        'comment_text'
       ],
       include: [
         {
@@ -77,12 +82,12 @@ router.get('/:id', (req, res) => {
         }
       ]
     })
-      .then(dbPostData => {
-        if (!dbPostData) {
+      .then(dbBlogData => {
+        if (!dbBlogData) {
           res.status(404).json({ message: 'No post found with this ID' });
           return;
         }
-        res.json(dbPostData);
+        res.json(dbBlogData);
       })
       .catch(err => {
         console.log(err);
@@ -96,7 +101,7 @@ router.post('/', withAuth, (req, res) => {
         post_url: req.body.post_url,
         user_id: req.session.user_id
       })
-        .then(dbPostData => res.json(dbPostData))
+        .then(dbBlogData => res.json(dbBlogData))
         .catch(err => {
           console.log(err);
           res.status(500).json(err);
@@ -114,12 +119,12 @@ router.put('/:id', withAuth, (req, res) => {
         }
       }
     )
-      .then(dbPostData => {
-        if (!dbPostData) {
+      .then(dbBlogData => {
+        if (!dbBlogData) {
           res.status(404).json({ message: 'No post found with this ID' });
           return;
         }
-        res.json(dbPostData);
+        res.json(dbBlogData);
       })
       .catch(err => {
         console.log(err);
@@ -133,12 +138,12 @@ router.delete('/:id', withAuth, (req, res) => {
         id: req.params.id
         }
     })
-        .then(dbPostData => {
-        if (!dbPostData) {
+        .then(dbBlogData => {
+        if (!dbBlogData) {
             res.status(404).json({ message: 'No post found with this id' });
             return;
         }
-        res.json(dbPostData);
+        res.json(dbBlogData);
         })
         .catch(err => {
         console.log(err);
