@@ -1,4 +1,4 @@
-const { Model, DataType } = require('sequelize')
+const { Model, DataTypes } = require('sequelize')
 const sequelize = require('../config/connection')
 
 class Blogs extends Model {}
@@ -26,19 +26,6 @@ Blogs.init({
         references: {
             model: 'user',
             key: 'id'
-        }
-    },
-
-    created: {
-        type: DataTypes.DATE,
-        allowNull: false
-    },
-
-    comment_text: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            len: [1]
         }
     }
 },
