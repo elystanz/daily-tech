@@ -1,6 +1,9 @@
 const sequelize = require('../config/connection');
-const Blogs = require('../models/blogs');
-const User = require('../models/users')
+
+// const Blogs = require('../models/blogs');
+// const User = require('../models/users')
+const { Blogs, User, Comment } = require('../models');
+
 const router = require('express').Router();
 router.get('/', (req, res) => {
     Blogs.findAll({
