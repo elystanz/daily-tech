@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const sequelize = require('../../config/connection');
-const { Blog, User, Comment } = require('../../models');
+// const sequelize = require('../../config/connection');
+const { Blogs, User, Comment } = require('../../models');
 // const withAuth = require('../../util/auth');
 
 router.get('/', (req, res) => {
-    Blog.findAll({
+    Blogs.findAll({
         attributes: [
             'id',
             'title',
@@ -47,7 +47,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    Blog.findOne({
+    Blogs.findOne({
       where: {
         id: req.params.id
       },
@@ -95,8 +95,8 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', withAuth, (req, res) => {
-    Blog.create({
+router.blog('/', withAuth, (req, res) => {
+    Blogs.create({
         title: req.body.title,
         post_url: req.body.post_url,
         user_id: req.session.user_id
@@ -109,7 +109,7 @@ router.post('/', withAuth, (req, res) => {
 });
 
 router.put('/:id', withAuth, (req, res) => {
-    Blog.update(
+    Blogs.update(
       {
         title: req.body.title
       },
@@ -133,7 +133,7 @@ router.put('/:id', withAuth, (req, res) => {
 });
   
 router.delete('/:id', withAuth, (req, res) => {
-    Blog.destroy({
+    Blogs.destroy({
         where: {
         id: req.params.id
         }

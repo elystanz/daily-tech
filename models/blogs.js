@@ -5,7 +5,7 @@ class Blogs extends Model {}
 
 Blogs.init({
     id: {
-        type: DatatTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
@@ -52,4 +52,4 @@ Blogs.init({
 
 );
 
-module.exports = Blog;
+module.exports = Blogs;

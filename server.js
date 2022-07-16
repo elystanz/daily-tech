@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
     res.render('index')
 });
 
-// app.user(routes);
+// app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening...'));
