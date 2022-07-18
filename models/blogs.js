@@ -24,32 +24,18 @@ Blogs.init({
     user_id: {
         type: DataTypes.STRING,
         references: {
-            model: "user",
+            model: "users",
             key: "id",
             }
         },
-    created: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        },
-
-    comment_text: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            len: [6],
-            }
-        }
     },
 
-{
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'blog'
-}
-
+    {
+        sequelize,
+        freezeTableName: true,
+        underscored: true,
+        modelName: "blogs",
+      }
 );
 
 module.exports = Blogs;

@@ -13,12 +13,7 @@ const commentData = [
     blog_id: 2,
   },
 
-  {
-    comment_text: "Test comment 3",
-    user_id: 3,
-    blog_id: 3,
-  }
 ];
 
 const seedComment = () => Comment.bulkCreate(commentData)
-module.exports = seedComment
+module.exports = seedComment;

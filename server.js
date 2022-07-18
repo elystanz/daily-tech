@@ -24,12 +24,13 @@ app.use(require('./controllers/'));
 
 app.use(session(sess));
 
-// const helpers = require('./utils/helpers');
+const helpers = require('./utils/helpers');
 
 const hbs = exphbs.create({
     extname: 'handlebars',
     defaultLayout: 'main',
     layoutsDir: __dirname + '/views/layout',
+    helpers
 });
 
 app.engine('handlebars', hbs.engine);
