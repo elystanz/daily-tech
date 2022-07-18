@@ -1,35 +1,56 @@
-# daily-tech
+# Daily Tech, a Tech Blog for Techies!
+# Table of Contents
+1. [Introduction](#introduction)
+2. [Application](#application)
+3. [Roadmap](#roadmap)
+4. [Contributions](#contributions)
+5. [Authors](#authors)
+6. [License](#license)
 
-`GIVEN a CMS-style blog site
-WHEN I visit the site for the first time
-THEN I am presented with the homepage, which includes existing blog posts if any have been posted; navigation links for the homepage and the dashboard; and the option to log in
-WHEN I click on the homepage option
-THEN I am taken to the homepage
-WHEN I click on any other links in the navigation
-THEN I am prompted to either sign up or sign in
-WHEN I choose to sign up
-THEN I am prompted to create a username and password
-WHEN I click on the sign-up button
-THEN my user credentials are saved and I am logged into the site
-WHEN I revisit the site at a later time and choose to sign in
-THEN I am prompted to enter my username and password
-WHEN I am signed in to the site
-THEN I see navigation links for the homepage, the dashboard, and the option to log out
-WHEN I click on the homepage option in the navigation
-THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created
-WHEN I click on an existing blog post
-THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment
-WHEN I enter a comment and click on the submit button while signed in
-THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
-WHEN I click on the dashboard option in the navigation
-THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post
-WHEN I click on the button to add a new blog post
-THEN I am prompted to enter both a title and contents for my blog post
-WHEN I click on the button to create a new blog post
-THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
-WHEN I click on one of my existing posts in the dashboard
-THEN I am able to delete or update my post and taken back to an updated dashboard
-WHEN I click on the logout option in the navigation
-THEN I am signed out of the site
-WHEN I am idle on the site for more than a set time
-THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments`
+
+## <a id="introduction">Introduction</a>
+Daily Tech is a blog site that is meant for techies of all proficiency! Write up a post about your favorite piece of gear, or pose a question to the community that's got you stumped.
+
+If you're cloning the repository, be sure to run `node server.js` to begin the application. If you run into dependency errors, be sure the required dependencies are all included by running `npm i`.
+
+This product is also deployed to Heroku.
+
+## <a id="application">Application</a>
+Soon there will be a video walkthrough of the application for your reference and enjoyment!
+
+This application requires the following dependencies to run, which are already declared within the package.json file:
+
+* bcrypt: ^5.0.1
+* body-parser: ^1.20.0
+* connect-session-sequelize: ^7.1.4
+* dotenv: ^16.0.1
+* express: ^4.18.1
+* express-handlebars: ^6.0.6
+* express-session: ^1.17.3
+* mysql2: ^2.3.3
+* node-modules: ^1.0.1
+* sequelize: ^6.20.1
+
+## <a id="roadmap">Roadmap</a>
+Adding images and videos are up next for Daily Tech's development, where users will be able to easily search their computer's library for images and videos which will attach to their posts. As well, privacy options for users will be implemented.
+
+## <a id="contributions">Contributions</a>
+Please feel free to make a pull request or submit an issue to troubleshoot any bugs you come across.
+
+## <a id="authors">Authors</a>
+[Elyse Stanziale](https://github.com/elystanz) is the main contributors and the creators of this application.
+
+## <a id="license">License</a>
+This application is protected under the ISC license.
+
+## <a id=#status>Project Status</a>
+The product is currently experiencing the following error, which prevents it from properly deploying:
+
+    `code: undefined,
+    errno: 3780,
+    sqlState: 'HY000',
+    sqlMessage: "Referencing column 'user_id' and referenced column 'id' in foreign key constraint 'blogs_ibfk_1' are incompatible.",
+    sql: 'CREATE TABLE IF NOT EXISTS `blogs` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255) NOT NULL, `content` VARCHAR(255) NOT NULL, `user_id` VARCHAR(255), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;',
+    parameters: undefined`
+
+This has been an ongoing issue that is still being dissected by a team and a patch will arrive soon.
